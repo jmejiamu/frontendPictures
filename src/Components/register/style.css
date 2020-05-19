@@ -1,0 +1,18 @@
+input[type="text"],
+[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid coral;
+}
+
+._card {
+  border: none; /*comment to show border....*/
+  width: 40%;
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /*Added*/
+  margin-top: 100px;
+}

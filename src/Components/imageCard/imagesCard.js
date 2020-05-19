@@ -5,6 +5,8 @@ import LastComments from "../showComments/LastComments";
 
 const ImagesCard = (props) => {
   console.log(props);
+
+  //-- move this code to ShowComments compents. 9...30 lines
   const [comments, setComments] = useState("");
   const handleChange = (e) => {
     setComments(e.target.value);
@@ -16,7 +18,7 @@ const ImagesCard = (props) => {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_id: 1,
+        user_id: 2,
         image_id: props.dataSource.image_id,
         users_comments: comments,
       }),
@@ -29,29 +31,17 @@ const ImagesCard = (props) => {
       <img src={props.dataSource.path_images} alt="pictures" />
       <h2>Title: Sunsets</h2>
       <hr />
+      <p>{props.dataSource.user_id}</p>
       {/* <form onSubmit={onSubmitComments}></form> */}
       <div>
-        <ShowComments />
+        <ShowComments
+          comments={comments}
+          onSubmitComments={onSubmitComments}
+          handleChange={handleChange}
+        />
+
         <LastComments />
       </div>
-      <form>
-        <label>
-          <input
-            className="br3 pa2 input-reset ba bg-transparent ml2 mr2 w-80"
-            type="text"
-            name="name"
-            value={comments}
-            placeholder="Write a comment..."
-            onChange={(e) => handleChange(e)}
-          />
-        </label>
-        <input
-          className="br3 pa2 btn btn-success"
-          onClick={onSubmitComments}
-          type="submit"
-          value="post"
-        />
-      </form>
     </div>
   );
 };
